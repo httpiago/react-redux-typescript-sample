@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "es2015"],
+    "target": "esnext",
+    "module": "commonjs",
+    "jsx": "react",
+    "rootDir": "./src",
+    "incremental": true,
+    "allowSyntheticDefaultImports": true
+  },
+  "exclude": ["dist", "node_modules", ".cache"]
+}
