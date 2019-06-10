@@ -5,6 +5,7 @@
     "module": "commonjs",
     "jsx": "react",
     "rootDir": "./src",
+    "strict": true,
     "incremental": true,
     "allowSyntheticDefaultImports": true
   },
