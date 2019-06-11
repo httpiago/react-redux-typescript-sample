@@ -1,19 +1,17 @@
 import React, { FunctionComponent } from 'react'
-import { connect } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { AppState } from '../store'
 
-type Props = ReturnType<typeof mapStateToProps> & {
+type Props = {
   children?: never,
 }
 
-const Title: FunctionComponent<Props> = ({ todos }) => {
+const Title: FunctionComponent<Props> = () => {
+  const todoLength = useSelector((state: AppState) => state.todos.length)
+
   return (
-    <h1>Você tem {todos.length} todos:</h1>
+    <h1>Você tem {todoLength} todos:</h1>
   )
 }
 
-const mapStateToProps = ({ todos }: AppState) => ({
-  todos
-})
-
-export default connect(mapStateToProps)(Title)
+export default Title
