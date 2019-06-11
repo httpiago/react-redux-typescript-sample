@@ -12,19 +12,19 @@ export enum Actions {
   REMOVE_ALL_TODOS,
 }
 
-type TodoActionType = ActionType<keyof typeof Actions, TodoSingleType>
+type TodoActionType = ActionType<Actions, TodoSingleType>
 
 const initialState: StateType = [ 'number one angel' ]
 
 export function todoReducer(state = initialState, { type, payload }: TodoActionType): StateType {
   switch (type) {
-    case 'ADD_TODO':
-      return [ ...state, payload ];
+    case Actions.ADD_TODO:
+      return [ ...state, payload! ];
 
-    case 'REMOVE_TODO':
+    case Actions.REMOVE_TODO:
       return state.filter(item => item !== payload);
 
-    case 'REMOVE_ALL_TODOS':
+    case Actions.REMOVE_ALL_TODOS:
       return [];
 
     default:
@@ -33,7 +33,7 @@ export function todoReducer(state = initialState, { type, payload }: TodoActionT
 }
 
 export const TodoActionCreators = {
-  addTodo: (payload: TodoSingleType) => ({ type: 'ADD_TODO', payload }),
-  removeTodo: (payload: TodoSingleType) => ({ type: 'REMOVE_TODO', payload }),
-  removeAll: () => ({ type: 'REMOVE_ALL_TODOS' }),
+  addTodo: (payload: TodoSingleType) => ({ type: Actions.ADD_TODO, payload }),
+  removeTodo: (payload: TodoSingleType) => ({ type: Actions.REMOVE_TODO, payload }),
+  removeAll: () => ({ type: Actions.REMOVE_ALL_TODOS }),
 }
