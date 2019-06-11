@@ -5,11 +5,11 @@ export type StateType = Array<TodoSingleType>
 
 export enum Actions {
   /** Adicionar novo item a lista. */
-  ADD_TODO,
+  ADD_TODO = 'ADD_TODO',
   /** Remover um item da lista. */
-  REMOVE_TODO,
+  REMOVE_TODO = 'REMOVE_TODO',
   /** Remover todos os itens da lista. */
-  REMOVE_ALL_TODOS,
+  REMOVE_ALL_TODOS = 'REMOVE_ALL_TODOS',
 }
 
 type TodoActionType = ActionType<Actions, TodoSingleType>
