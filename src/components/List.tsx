@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators, Dispatch } from 'redux'
 import { AppState } from '../store'
-import { removeTodo } from '../store/ducks/todos'
+import { removeTodo } from '../store/todos/actions'
 
 type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps> & {
   children?: never,

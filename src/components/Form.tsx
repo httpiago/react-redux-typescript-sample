@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { addTodo, removeAll } from '../store/ducks/todos'
+import { addTodo, removeAll } from '../store/todos/actions'
 import faker from 'faker'
 
 type Props = {
@@ -19,7 +19,7 @@ const Form: FunctionComponent<Props> = () => {
     event.preventDefault();
 
     if (newTodoText !== '') {
-      dispatch(addTodo(newTodoText))
+      dispatch.addTodo(newTodoText)
       setNewTodoText('')
     }
   }
