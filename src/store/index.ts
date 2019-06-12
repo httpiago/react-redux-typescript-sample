@@ -1,6 +1,6 @@
 import { combineReducers, createStore } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import { todoReducer } from './TodoStore'
+import { default as todoReducer } from './ducks/todos'
 
 const rootReducer = combineReducers({
   todos: todoReducer

@@ -1,14 +1,14 @@
 import React, { FunctionComponent, useState } from 'react'
-import { Dispatch, bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import { TodoActionCreators } from '../store/TodoStore'
+import { useDispatch } from 'react-redux'
+import { addTodo, removeAll } from '../store/ducks/todos'
 import faker from 'faker'
 
-type Props = ReturnType<typeof mapDispatchToProps> & {
+type Props = {
   children?: never,
 }
 
-const Form: FunctionComponent<Props> = (props) => {
+const Form: FunctionComponent<Props> = () => {
+  const dispatch = useDispatch()
   const [newTodoText, setNewTodoText] = useState<string>('')
 
   function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -19,13 +19,17 @@ const Form: FunctionComponent<Props> = (props) => {
     event.preventDefault();
 
     if (newTodoText !== '') {
-      props.addTodo(newTodoText)
+      dispatch(addTodo(newTodoText))
       setNewTodoText('')
     }
   }
 
   function handleAddRandom() {
-    props.addTodo(faker.lorem.words(5))
+    dispatch(addTodo(faker.lorem.words(5)))
+  }
+
+  function handleRemoveAll() {
+    dispatch(removeAll())
   }
 
   return (
@@ -34,12 +38,9 @@ const Form: FunctionComponent<Props> = (props) => {
       <button type="submit">Adicionar novo item</button>
       {' | '}
       <button onClick={handleAddRandom}>Adicionar item aleatório</button>
-      <button onClick={props.removeAll}>Remover todos os items</button>
+      <button onClick={handleRemoveAll}>Remover todos os items</button>
     </form>
   )
 }
 
-const mapDispatchToProps = (dispatch: Dispatch) =>
-  bindActionCreators(TodoActionCreators, dispatch)
-
-export default connect(null, mapDispatchToProps)(Form)
+export default Form
