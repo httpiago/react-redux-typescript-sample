@@ -29,7 +29,7 @@ const List: FunctionComponent<Props> = ({ todos, ...props }) => {
 }
 
 const mapStateToProps = ({ todos }: AppState) => ({
-  todos
+  todos: todos.list
 })
 
 const mapDispatchToProps = (dispatch: Dispatch) =>
